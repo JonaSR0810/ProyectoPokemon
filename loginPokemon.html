@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Contacto</title>
+    <link rel="stylesheet" href="styleLogin.css">
+    <script>
+      // import { decodeJwt } from 'https://cdnjs.cloudflare.com/ajax/libs/jose/5.9.4/index.js'
+      document.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const clave = document.getElementById("clave").value;
+        const error = document.getElementById("mensajeError");
+        error.innerHTML = "";
+
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "User-Agent": "insomnia/10.1.0",
+            apikey:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5Z3J4bHJqbmV1dGVhcnVndWFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NDYxNjUsImV4cCI6MjA0NDEyMjE2NX0.wV6iwBGd7T4WznhRUJ6kKNTtpoMK1tmiicphWIkJhh8",
+
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR5Z3J4bHJqbmV1dGVhcnVndWFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NDYxNjUsImV4cCI6MjA0NDEyMjE2NX0.wV6iwBGd7T4WznhRUJ6kKNTtpoMK1tmiicphWIkJhh8",
+          },
+          body: `{"email":"${email}","password":"${clave}"}`,
+        };
+
+        fetch(
+          "https://dygrxlrjneutearuguak.supabase.co/auth/v1/token?grant_type=password",
+          options,
+        )
+          .then((response) => response.json())
+          .then((response) => {
+            console.log(response);
+
+            if (response.access_token) {
+              sessionStorage.setItem("access_token", response.access_token);
+
+              sessionStorage.setItem("refresh_token", response.refresh_token);
+
+              window.location.href = "index.html";
+            } else {
+              error.textContent = "Error: Usuario o contraseña incorrectos.";
+            }
+          })
+          .catch((err) => console.error(err));
+      });
+
+      // export function verificaAccessToken() {
+      //     const token = window.sessionStorage.getItem('access_token')
+      //     if (token) {
+      //         const payload = decodeJwt(token)
+      //         const expiration = payload.exp
+
+      //         const hasExpirate = expiration * 1000 < Date.now()
+      //         return !hasExpirate
+      //     }else {
+      //         return false
+      //     }
+      // }
+    </script>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Inicio De Sesión</h2>
+      <form>
+        <div class="form-group">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Contraseña:</label>
+          <input type="password" id="clave" name="clave" required />
+        </div>
+
+        <div class="form-group">
+          <p id="mensajeError"></p>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </body>
+</html>

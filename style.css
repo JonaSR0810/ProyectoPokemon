@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cG9rZW1vbnx8fHx8fDE2ODU5ODcyODQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+            background-size: cover;
+            background-position: center;
+        }
+        .battle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #FFCB05;
+            text-shadow: 2px 2px #3D7DCA;
+            font-size: 2.5em;
+        }
+        .battle-field {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+            /* height: 400px; */
+        }
+        .player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(61, 125, 202, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 30%;
+        }
+        .pokemon-list {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .pokemon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .pokemon {
+            width: 60px;
+            height: 60px;
+            border: 3px solid #FFCB05;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(255,203,5,0.5);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+        .pokemon:hover {
+            transform: scale(1.1);
+        }
+        .pokemon img {
+            width: 140%;
+            height: 140%;
+            object-fit: contain;
+        }
+        .pokemon-hp {
+            font-size: 10px;
+            margin-top: 5px;
+        }
+        .pokemon-image {
+            width: 150px;
+            height: 150px;
+            border: 3px solid #FFCB05;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(255,203,5,0.7);
+            overflow: hidden;
+        }
+        .pokemon-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .battle-log {
+            width: 40rem;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 3px solid #FFCB05;
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+            font-size: 12px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .battle-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #FFCB05;
+            border: none;
+            border-radius: 5px;
+            color: #3D7DCA;
+            font-family: 'Press Start 2P', cursive;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #3D7DCA;
+            color: #FFCB05;
+            transform: scale(1.05);
+        }
+        h2, .pokemon-name {
+            color: #FFCB05;
+            text-shadow: 1px 1px #3D7DCA;
+        }
